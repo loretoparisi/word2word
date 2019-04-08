@@ -1,4 +1,10 @@
-#-*- coding: utf-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys  
+reload(sys)  
+sys.setdefaultencoding('utf-8')
+
 from .utils import download_or_load
 
 class Word2word:
