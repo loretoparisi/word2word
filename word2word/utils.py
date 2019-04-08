@@ -49,5 +49,8 @@ def download_or_load(lang1, lang2, dict_path=''):
 
         logging.info("Download data ...")
         wget.download(url, fpath)
-    word2x, y2word, x2ys = pickle.load(open(fpath, 'rb'))
-    return word2x, y2word, x2ys
+    try:
+        word2x, y2word, x2ys = pickle.load(open(fpath, 'rb'))
+        return word2x, y2word, x2ys
+    except:
+        return None
