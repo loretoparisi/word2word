@@ -7,7 +7,7 @@ import os
 from zodbpickle import pickle
 
 
-def get_savedir():
+def get_savedir(dict_path=''):
     pf = platform.system()
     if pf == "Windows":
         savedir = "C:\word2word"
@@ -15,7 +15,7 @@ def get_savedir():
         savedir = "/usr/share/word2word"
     else:
         savedir = "/usr/local/share/word2word"
-
+    savedir = dict_path if dict_path else savedir
     if not os.path.exists(savedir):
         os.makedirs(savedir)
     return savedir
@@ -35,8 +35,8 @@ def get_download_url(lang1, lang2):
     raise Exception("Not supperted language")
 
 
-def download_or_load(lang1, lang2):
-    savedir = get_savedir()
+def download_or_load(lang1, lang2, dict_path=''):
+    savedir = get_savedir(dict_path)
     fpath = os.path.join(savedir, "%(lang1)s-%(lang2)s.pkl" % {'lang1':lang1, 'lang2':lang2})
     if not os.path.exists(fpath):
         # download from cloud
