@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-from word2word.utils import download_or_load
+from .utils import download_or_load
 
 class Word2word:
     def __init__(self, lang1, lang2):

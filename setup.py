@@ -1,11 +1,12 @@
 import setuptools
-
-with open("README.md", mode="r", encoding="utf-8") as fh:
+import io
+with io.open("README.md", mode="r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 REQUIRED_PACKAGES = [
     'requests',
     'wget',
+    'zodbpickle'
 ]
 
 setuptools.setup(

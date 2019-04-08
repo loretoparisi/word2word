@@ -4,7 +4,7 @@ import wget
 import requests
 import logging
 import os
-import pickle
+from zodbpickle import pickle
 
 
 def get_savedir():
@@ -17,7 +17,7 @@ def get_savedir():
         savedir = "/usr/local/share/word2word"
 
     if not os.path.exists(savedir):
-        os.makedirs(savedir, exist_ok=True)
+        os.makedirs(savedir)
     return savedir
 
 
@@ -31,16 +31,17 @@ def get_download_url(lang1, lang2):
     for line in open(filepath, 'r'):
         l1, l2 = line.strip().split("-")
         if lang1 == l1 and lang2 == l2:
-            return f"https://mk.kakaocdn.net/dn/kakaobrain/word2word/{lang1}-{lang2}.pkl"
+            return "https://mk.kakaocdn.net/dn/kakaobrain/word2word/%s-%s.pkl" % (lang1,lang2)
     raise Exception("Not supperted language")
 
 
 def download_or_load(lang1, lang2):
     savedir = get_savedir()
-    fpath = os.path.join(savedir, f"{lang1}-{lang2}.pkl")
+    fpath = os.path.join(savedir, "{lang1}-{lang2}.pkl")
     if not os.path.exists(fpath):
         # download from cloud
         url = get_download_url(lang1, lang2)
+        print(url)
         if url is None:
             raise ValueError("There's no data for those languages")
 
