@@ -3,7 +3,7 @@
 
 from word2word import Word2word
 
-dict_path='/root/word2word'
+dict_path='/Volumes/Data/dataset/word2word'
 en2fr = Word2word("en", "fr", dict_path=dict_path)
 # out: ['pomme', 'pommes', 'pommier', 'tartes', 'fleurs']
 print '%s' % ','.join(map(str, en2fr("apple")))

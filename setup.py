@@ -6,7 +6,8 @@ with io.open("README.md", mode="r", encoding="utf-8") as fh:
 REQUIRED_PACKAGES = [
     'requests',
     'wget',
-    'zodbpickle'
+    'pythainlp==1.6.0.7',
+    'zodbpickle',
 ]
 
 setuptools.setup(

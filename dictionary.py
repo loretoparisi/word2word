@@ -3,7 +3,7 @@
 
 from word2word import Word2word
 
-dict_path='/root/word2word'
+dict_path='/Volumes/Data/dataset/word2word'
 
 with open('word2word/supporting_languages.txt') as f:
     lines = f.readlines()
